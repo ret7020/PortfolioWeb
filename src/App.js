@@ -15,6 +15,48 @@ const openUrl = (url) => {
 };
 function App() {
   const [lang, setLang] = useState("en");
+  const PROJECTS = [
+    {
+      preview: "ProjectsPreviews/school_bells.png",
+      title: [
+        "Autonomus School Bells System",
+        "Автономная система школьных звонков",
+      ],
+      url: "https://github.com/ret7020/SchoolBellProject",
+      about: [
+        "Autonomus system for school bells. Powered by Raspberry Pi. It has a web adaptive web interface with the ability to change the schedule, download and change ringtones, as well as monitor the system status. Now works 24/7 in one school without failures. It is planned to expand to a school complex.",
+        "Автономная система для школьных звонков. Работает на Raspberry Pi. Имеет веб адаптивный веб-интерфейс с возможностью изменять расписание, загружать и изменять мелодии звонка, а так же следить за состоянием системы. Сейчас работает 24/7 в одной школе без сбоев. Планируется расширить на комплекс школ.",
+      ],
+      stack: ["Flask", "SQLite", "Jinja2", "Bootstrap", "Pure JS"],
+    },
+    {
+      preview: "ProjectsPreviews/web_robo_block.png",
+      title: [
+        "Web Robo-Block",
+        "Веб Robo-Block",
+      ],
+      url: "https://github.com/ret7020/WebRoboBlock",
+      about: [
+        "IDE for visual programming of robots on a special framework. A special educational robot consists of motors, servos, IR sensors connected to Arduino. The Raspberry PI controls the hardware via the Arduino, communicating with it via SPI. This IDE runs on the Raspberry PI. There is support for launching with ngrok and displaying video from the usb / csi camera on the robot",
+        "IDE для визуального программирования роботов на специальном фреймворке. Специальный учебный робот состоит из двигателей, серво-приводов, ИК датчиков, подключённых к Arduino. Raspberry PI управляет 'железом' через Arduino, общаясь с ней через SPI. На Raspberry PI запускается данная IDE. Есть поддержка запуска с ngrok и отображение видео с usb/csi камеры на роботе",
+      ],
+      stack: ["Flask", "Pure JS", "Pure CSS", "SpiDev", "PyNgrok", "OpenCV", "pyTelegramBotAPI"],
+    },
+    {
+      preview: "ProjectsPreviews/gpt3_ru_tg_chatbot.png",
+      title: [
+        "Ru GPT 3 ChatBot in TG",
+        "Русский GPT 3 чат бот в телеграм",
+      ],
+      url: "https://github.com/ret7020/RuChatGPT",
+      about: [
+        "This chat bot tries to replicate the communication style of people from my chats. Chats were taken from VK and Telegram. For VK, a special collector was written through their api. Telegram bot on the aiogram framework is used as an interface for the bot",
+        "Данный чат бот пытается повторить стиль общения людей из моих чатов. Чаты брались из вк и телеграм. Для вк был написан специальный сборщик через их апи. В качестве интерфейса для бота используется телеграм бот на фреймворке aiogram",
+      ],
+      stack: ["PyTorch", "Requests", "Aiogram", "Transformers"],
+    }
+  ];
+  
   return (
     <main className="px-8 md:px-20 lg:px-40">
       <Navbar lang={lang} setLang={setLang} />
@@ -38,8 +80,8 @@ function App() {
         </h3>
         <p className="text-md py-1 text-gray-800 md:text-xl">
           {lang === "en"
-            ? "Interesetd in: Machine Learning, Data Science, Computer Vision, Microcontrollers Firmware Development, Web Backend. Learning web FrontEnd via study projects. I advocate open source and develop open source projects myself."
-            : "Интересы: Машинное обучение, большие данные, компьютерное зрение, разработка под микроконтроллеры, бэкэнд веб-приложений. Изучаю фронтэнд разработку. Поддерживаю проекты с открым исходным кодом и сам их разрабатываю."}
+            ? "Interesetd in: Machine Learning, Data Science, Computer Vision, Microcontrollers Firmware Development, Web Backend. Learning web FrontEnd via study projects. I advocate open source and develop open source projects myself. True linux user!"
+            : "Интересы: Машинное обучение, большие данные, компьютерное зрение, разработка под микроконтроллеры, бэкэнд веб-приложений. Изучаю фронтэнд разработку. Поддерживаю проекты с открым исходным кодом и сам их разрабатываю. Настоящий фанат Linux."}
         </p>
         <div className="text-5xl py-4 flex justify-center gap-10">
           <AiFillGithub
@@ -150,71 +192,41 @@ function App() {
             ? "Some projects that I developed alone."
             : "Проекты, разработанные лично мной"}
         </p>
+
         <div className="mt-4 flex flex-col md:flex-row gap-8">
-          <div className="w-full shadow-lg rounded-md px-4 py-5 flex flex-col items-center text-center gap-1">
-            <img
-              src="ProjectsPreviews/school_bells.png"
-              className="w-100"
-              alt="school_bells"
-            />
-            <h2 className="text-xl">
-              {lang === "en"
-                ? "Autonomus School Bells System"
-                : "Автономная система школьных звонков"}
-            </h2>
-            <AiFillGithub
-              className="text-lg text-gray-500 hover:text-gray-900 cursor-pointer items-center text-center"
-              onClick={() => {
-                openUrl("https://github.com/ret7020/SchoolBellProject");
-              }}
-            />
-            <p className="text-gray-500">
-              {lang === "en"
-                ? "Autonomus system for school bells. Powered by Raspberry Pi. It has a web adaptive web interface with the ability to change the schedule, download and change ringtones, as well as monitor the system status. Now works 24/7 in one school without failures. It is planned to expand to a school complex."
-                : "Автономная система для школьных звонков. Работает на Raspberry Pi. Имеет веб адаптивный веб-интерфейс с возможностью изменять расписание, загружать и изменять мелодии звонка, а так же следить за состоянием системы. Сейчас работает 24/7 в одной школе без сбоев. Планируется расширить на комплекс школ."}
-            </p>
-            <p className="text-xl ">
-              {lang === "en" ? "Built with" : "Сделано с использованием"}
-            </p>
-            <ul>
-              <li>Flask</li>
-              <li>SQLite</li>
-              <li>Jinja2</li>
-              <li>Bootstrap</li>
-              <li>Pure JS</li>
-            </ul>
-          </div>
-          <div className="w-full shadow-lg rounded-md px-4 py-5 flex flex-col items-center text-center gap-1">
-            <img
-              src="ProjectsPreviews/web_robo_block.png"
-              className="w-100"
-              alt="web_robo_block"
-            />
-            <h2 className="text-xl">Web Robo-Block</h2>
-            <AiFillGithub
-              className="text-lg text-gray-500 hover:text-gray-900 cursor-pointer items-center text-center"
-              onClick={() => {
-                openUrl("https://github.com/ret7020/WebRoboBlock");
-              }}
-            />
-            <p className="text-gray-500">
-              {lang === "en"
-                ? "IDE for visual programming of robots on a special framework. A special educational robot consists of motors, servos, IR sensors connected to Arduino. The Raspberry PI controls the hardware via the Arduino, communicating with it via SPI. This IDE runs on the Raspberry PI. There is support for launching with ngrok and displaying video from the usb / csi camera on the robot"
-                : "IDE для визуального программирования роботов на специальном фреймворке. Специальный учебный робот состоит из двигателей, серво-приводов, ИК датчиков, подключённых к Arduino. Raspberry PI управляет 'железом' через Arduino, общаясь с ней через SPI. На Raspberry PI запускается данная IDE. Есть поддержка запуска с ngrok и отображение видео с usb/csi камеры на роботе"}
-            </p>
-            <p className="text-xl ">
-              {lang === "en" ? "Built with" : "Сделано с использованием"}
-            </p>
-            <ul>
-              <li>Flask</li>
-              <li>PureJS</li>
-              <li>Pure CSS</li>
-              <li>Spidev</li>
-              <li>PyNgrok</li>
-              <li>OpenCV</li>
-              <li>pyTelegramBotAPI</li>
-            </ul>
-          </div>
+          {PROJECTS.map((project, index) => (
+            <div className="w-full shadow-lg rounded-md px-4 py-5 flex flex-col items-center text-center gap-1" key={index}>
+              <img
+                src={project.preview}
+                className="w-100"
+                alt={project.preview}
+              />
+              <h2 className="text-xl">
+                {lang === "en"
+                  ? project.title[0]
+                  : project.title[1]}
+              </h2>
+              <AiFillGithub
+                className="text-lg text-gray-500 hover:text-gray-900 cursor-pointer items-center text-center"
+                onClick={() => {
+                  openUrl(project.url);
+                }}
+              />
+              <p className="text-gray-500">
+                {lang === "en"
+                  ? project.about[0]
+                  : project.about[1]}
+              </p>
+              <p className="text-xl ">
+                {lang === "en" ? "Built with" : "Сделано с использованием"}
+              </p>
+              <ul>
+                {project.stack.map((library) => (
+                  <li key={library}>{library}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </section>
 
