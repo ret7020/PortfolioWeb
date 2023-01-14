@@ -7,7 +7,7 @@ import {
   AiFillEnvironment,
   AiFillPhone,
 } from "react-icons/ai";
-import { BsTelegram } from "react-icons/bs";
+import { BsTelegram, BsGlobe } from "react-icons/bs";
 import { useState } from "react";
 
 const openUrl = (url) => {
@@ -15,6 +15,31 @@ const openUrl = (url) => {
 };
 function App() {
   const [lang, setLang] = useState("en");
+
+  const HACKATHONS = [
+    {
+      preview: "Hackathons/drive_hack.png",
+      title: "DriveHack 2022",
+      orgUrl: "https://ya-doma.ru/drivehack/",
+      solutionUrl: "https://github.com/ret7020/DriveHackSolution",
+      about: [
+        "Develop of a case for classifying document scans. 3 classes: invoice payment, invoice, left document. 2 classification methods were implemented: Convolutional neural network on PyTorch, based on VGG16, as well as getting text from a scan via tesseract ocr.",
+        "Разработка кейса по классификации сканов документов. 3 класса: счёт оплата, счёт фактура, левый документ. Было реализовано 2 метода классификации: Свёрточная нейросеть на PyTorch, на базе VGG16, а так же получение текста со скана через tesseract ocr."
+      ],
+      status: 1 // 1 - win; 0 - lose
+    },
+    {
+      preview: "Hackathons/poly_hack.png",
+      title: "PolyHack 2023",
+      orgUrl: "https://polyhack.codingprojects.ru/",
+      solutionUrl: "https://github.com/ItClassDev",
+      about: [
+        "We continued to develop the school system for IT classes in Moscow. We have integrated the ability to log in through our platform account. We developed a system for automatic testing of programming tasks in a sandbox based on a Docker container. Backend-FastAPI; FrontEnd - ReactJS; Checker - Native C++",
+        "Продолжили разработку школьной системы для IT классов Москвы. Интегрировали возможность входа, через аккаунт нашей платформы. Разработали систему автоматического тестирования задач по программированию в песочнице на основе Docker контейнера. Backend - FastAPI; FrontEnd - ReactJS; Checker - Native C++"
+      ],
+      status: 1 // 1 - win; 0 - lose
+    }
+  ]
   const PROJECTS = [
     {
       preview: "ProjectsPreviews/school_bells.png",
@@ -177,7 +202,7 @@ function App() {
             <ul>
               <li>Arch based + Debian based</li>
               <li>GitHub Actions CI</li>
-              <li>Docker</li>
+              <li>Docker + Docker Compose</li>
             </ul>
           </div>
         </div>
@@ -225,6 +250,50 @@ function App() {
                   <li key={library}>{library}</li>
                 ))}
               </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+
+      <section id="portfolio" className="mt-10">
+        <h1 className="text-xl font-medium">
+          {lang === "en" ? "Hackathons" : "Хакатоны"}
+        </h1>
+        <p className="mt-1 text-md">
+          {lang === "en"
+            ? "Hackathons I participated in."
+            : "Хактоны, в которых я принял участие."}
+        </p>
+
+        <div className="mt-4 flex flex-col md:flex-row gap-8">
+          {HACKATHONS.map((hackathon, index) => (
+            <div className="w-full shadow-lg rounded-md px-4 py-5 flex flex-col items-center text-center gap-1" key={index}>
+              <img
+                src={hackathon.preview}
+                className="w-100"
+                alt={hackathon.preview}
+              />
+              <h2 className="text-xl">{hackathon.title} - {hackathon.status ? lang === "en" ? "Win" : "Победа" : lang === "en" ? "Lose" : "Не победа"}</h2>
+              <div className="text-5xl py-4 flex justify-center gap-3">
+                <AiFillGithub
+                  className="text-lg text-gray-500 hover:text-gray-900 cursor-pointer items-center text-center"
+                  onClick={() => {
+                    openUrl(hackathon.solutionUrl);
+                  }}
+                />
+                <BsGlobe
+                  className="text-lg text-gray-500 hover:text-gray-900 cursor-pointer items-center text-center"
+                  onClick={() => {
+                    openUrl(hackathon.orgUrl);
+                  }}
+                />
+              </div>
+              <p className="text-gray-500">
+                {lang === "en"
+                  ? hackathon.about[0]
+                  : hackathon.about[1]}
+              </p>
             </div>
           ))}
         </div>
