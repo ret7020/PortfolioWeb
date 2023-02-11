@@ -18,6 +18,7 @@ const openUrl = (url) => {
 function App() {
   const [lang, setLang] = useState("en");
   const [open, setOpen] = useState(false);
+  const [slides_curr, SetSlidesCurr] = useState([]);
 
   const HACKATHONS = [
     {
@@ -45,7 +46,12 @@ function App() {
   ];
   const PROJECTS = [
     {
-      preview: "ProjectsPreviews/school_bells.png",
+      images: [
+        "ProjectsPreviews/school_bells/0.png",
+        "ProjectsPreviews/school_bells/1.png",
+        "ProjectsPreviews/school_bells/2.png",
+        "ProjectsPreviews/school_bells/3.png",
+      ],
       title: [
         "Autonomus School Bells System",
         "Автономная система школьных звонков",
@@ -58,7 +64,10 @@ function App() {
       stack: ["Flask", "SQLite", "Jinja2", "Bootstrap", "Pure JS"],
     },
     {
-      preview: "ProjectsPreviews/web_robo_block.png",
+      images: [
+        "ProjectsPreviews/robo_block/1.png",
+        "ProjectsPreviews/robo_block/0.png",
+      ],
       title: ["Web Robo-Block", "Веб Robo-Block"],
       url: "https://github.com/ret7020/WebRoboBlock",
       about: [
@@ -76,17 +85,7 @@ function App() {
       ],
     },
     {
-      preview: "ProjectsPreviews/gpt3_ru_tg_chatbot.png",
-      title: ["Ru GPT 3 ChatBot in TG", "Русский GPT 3 чат бот в телеграм"],
-      url: "https://github.com/ret7020/RuChatGPT",
-      about: [
-        "This chat bot tries to replicate the communication style of people from my chats. Chats were taken from VK and Telegram. For VK, a special collector was written through their api. Telegram bot on the aiogram framework is used as an interface for the bot",
-        "Данный чат бот пытается повторить стиль общения людей из моих чатов. Чаты брались из вк и телеграм. Для вк был написан специальный сборщик через их апи. В качестве интерфейса для бота используется телеграм бот на фреймворке aiogram",
-      ],
-      stack: ["PyTorch", "Requests", "Aiogram", "Transformers"],
-    },
-    {
-      preview: "ProjectsPreviews/eurobot_calculator.png",
+      images: ["ProjectsPreviews/eurobot_calculator/0.png", "ProjectsPreviews/eurobot_calculator/1.png", "ProjectsPreviews/eurobot_calculator/2.png", "ProjectsPreviews/eurobot_calculator/3.png"],
       title: ["Eurobot 2023 Calculator", "Калькулятор для Eurobot 2023"],
       url: "https://github.com/ret7020/EurobotCalculator",
       deploy: "https://ret7020.github.io/EurobotCalculator/",
@@ -96,19 +95,21 @@ function App() {
       ],
       stack: ["ReactJS", "Bootstrap5", "Github Pages"],
     },
+    {
+      images: ["ProjectsPreviews/gpt3_chat_bot/0.png"],
+      title: ["Ru GPT 3 ChatBot in TG", "Русский GPT 3 чат бот в телеграм"],
+      url: "https://github.com/ret7020/RuChatGPT",
+      about: [
+        "This chat bot tries to replicate the communication style of people from my chats. Chats were taken from VK and Telegram. For VK, a special collector was written through their api. Telegram bot on the aiogram framework is used as an interface for the bot",
+        "Данный чат бот пытается повторить стиль общения людей из моих чатов. Чаты брались из вк и телеграм. Для вк был написан специальный сборщик через их апи. В качестве интерфейса для бота используется телеграм бот на фреймворке aiogram",
+      ],
+      stack: ["PyTorch", "Requests", "Aiogram", "Transformers"],
+    },
   ];
 
   return (
     <>
-      <Lightbox
-        open={open}
-        close={() => setOpen(false)}
-        slides={[
-          { src: "/image1.jpg" },
-          { src: "/image2.jpg" },
-          { src: "/image3.jpg" },
-        ]}
-      />
+      <Lightbox open={open} close={() => setOpen(false)} slides={slides_curr} />
       <main className="px-8 md:px-20 lg:px-40">
         <Navbar lang={lang} setLang={setLang} />
 
@@ -244,26 +245,42 @@ function App() {
               : "Проекты, разработанные лично мной"}
           </p>
 
-          <div class="mt-4 flex content-center grid lg:grid-cols-3 gap-8 md:flex-row md">
+          <div className="mt-4 flex content-center grid lg:grid-cols-3 gap-8 md:flex-row md">
             {PROJECTS.map((project, index) => (
               <div
                 className="w-full shadow-lg rounded-md px-4 py-5 flex flex-col items-center text-center gap-1"
                 key={index}
               >
                 <img
-                  src={project.preview}
+                  src={project.images[0]}
                   className="w-100"
-                  alt={project.preview}
+                  alt={project.images[0]}
+                  onClick={(e) => {
+                    SetSlidesCurr([
+                      ...project.images.map((image) => ({ src: image })),
+                    ]);
+                    setOpen(true);
+                  }}
                 />
                 <h2 className="text-xl">
                   {lang === "en" ? project.title[0] : project.title[1]}
                 </h2>
-                <AiFillGithub
-                  className="text-lg text-gray-500 hover:text-gray-900 cursor-pointer items-center text-center"
-                  onClick={() => {
-                    openUrl(project.url);
-                  }}
-                />
+                <div className="text-5xl py-4 flex justify-center gap-2">
+                  <AiFillGithub
+                    className="text-lg text-gray-500 hover:text-gray-900 cursor-pointer items-center text-center"
+                    onClick={() => {
+                      openUrl(project.url);
+                    }}
+                  />
+                  {"deploy" in project && (
+                    <BsGlobe
+                      className="text-lg text-gray-500 hover:text-gray-900 cursor-pointer items-center text-center"
+                      onClick={() => {
+                        openUrl(project.deploy);
+                      }}
+                    />
+                  )}
+                </div>
                 <p className="text-gray-500">
                   {lang === "en" ? project.about[0] : project.about[1]}
                 </p>
