@@ -15,6 +15,31 @@ import "yet-another-react-lightbox/styles.css";
 const openUrl = (url) => {
   window.open(url, "_blank", "noopener,noreferrer");
 };
+
+const TechologyTag = ({ name }) => (
+  <div
+    class="ml-4 mb-2 text-xs inline-flex items-center font-bold leading-sm px-3 py-1 rounded-full bg-white text-gray-700 border"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="feather feather-archive mr-2"
+    >
+      <polyline points="21 8 21 21 3 21 3 8"></polyline>
+      <rect x="1" y="3" width="22" height="5"></rect>
+      <line x1="10" y1="12" x2="14" y2="12"></line>
+    </svg>
+    {name}
+  </div>
+);
+
 function App() {
   const [lang, setLang] = useState("en");
   const [open, setOpen] = useState(false);
@@ -107,6 +132,27 @@ function App() {
     },
   ];
 
+  const TECHNOLOGIES = [
+    {
+      name: ["Python", "Python"],
+      image: "python.png",
+      about: ["Develop neural networks, web backend, IoT high level software, data analyze, telegram bots.", "Разрабатываю нейронные сети, бэкэнд веб приложений, программное обеспечение для интернета вещей, анализ данных, телеграм боты"],
+      tools: ["FastAPI", "Flask", "Sqlalchemy", "OpenCV", "PyTorch", "SkLearn", "Catboost", "Yolo", "Pandas", "Matplotlib", "Aiogram"]
+    },
+    {
+      name: ["Web", "Веб"],
+      image: "web.png",
+      about: ["FullStack web development(learning modern FrontEnd now).", "Фулл-стэк веб разработка (изучаю современную разработку фронтэнда)."],
+      tools: ["ReactJS", "Ant Design", "Tailwind CSS", "Bootstrap 5", "React Router Dom", "Figma"]
+    },
+    {
+      name: ["System Administration/DevOPS", "Системное администрирование/DevOPS"],
+      image: "ops.png",
+      about: ["Hate Windows, use Linux everytime...", "Против Windows, использую Linux всегда"],
+      tools: ["Arch based + Debian based", "GitHub Actions CI", "Docker + Docker Compose", "Nginx"]
+    }
+  ]
+
   return (
     <>
       <Lightbox open={open} close={() => setOpen(false)} slides={slides_curr} />
@@ -151,6 +197,7 @@ function App() {
           </div>
         </section>
 
+
         <section id="service" className="">
           <h1 className="text-xl font-medium">
             {lang === "en" ? "Techical Stack" : "Технологии"}
@@ -160,79 +207,29 @@ function App() {
               ? "I have experience in building FullStack REST-API web applications, low level Arduino-RaspberryPI communication framework, machine-learning applications(images, audio, nlp)"
               : "У меня есть опыт в разработке фулл-стэк веб приложений с REST API, низкоуровневой разработки фреймворка для коммуникации Raspberry PI с ардуино, приложения с машинным обучением (изображения, звук и текст)."}
           </p>
-
           <div className="mt-4 flex flex-col md:flex-row gap-8">
-            <div className="w-full shadow-lg rounded-md px-4 py-5 flex flex-col items-center text-center gap-1">
-              <img src="python.png" className="w-48" alt="python" />
-              <h2 className="text-xl">Python</h2>
-              <p className="text-gray-500">
-                {lang === "en"
-                  ? "Develop neural networks, web backend, IoT high level software, data analyze, telegram bots."
-                  : "Разрабатываю нейронные сети, бэкэнд веб приложений, программное обеспечение для интернета вещей, анализ данных, телеграм боты"}
-              </p>
-              <p className="text-xl ">
-                {lang === "en"
-                  ? "Main Frameworks/tools"
-                  : "Основные фреймворки/инструменты"}
-              </p>
-              <ul>
-                <li>FastAPI</li>
-                <li>Flask</li>
-                <li>Sqlalchemy</li>
-                <li>OpenCV</li>
-                <li>PyTorch</li>
-                <li>SkLearn</li>
-                <li>Yolo</li>
-                <li>Matplotlib + Pandas</li>
-                <li>Aiogram</li>
-              </ul>
-            </div>
+            {TECHNOLOGIES.map((item) => (
+              <div className="w-full shadow-lg rounded-md px-4 py-5 flex flex-col items-center text-center gap-1">
+                <img src={item.image} className="w-48" alt={item.name[0]} />
+                <h2 className="text-xl">{lang === "en" ? item.name[0] : item.name[1]}</h2>
+                <p className="text-gray-500">
+                  {lang === "en" ? item.about[0] : item.about[1]}
+                </p>
+                <p className="text-xl ">
+                  {lang === "en"
+                    ? "Main Frameworks/tools"
+                    : "Основные фреймворки/инструменты"}
+                </p>
+                <ul>
+                  {item.tools.map((library) => (
+                    <TechologyTag key={library} name={library} />
+                  ))}
+                </ul>
+              </div>
 
-            <div className="w-full shadow-lg rounded-md px-4 py-5 flex flex-col items-center text-center gap-1">
-              <img src="web.png" className="w-48" alt="gambar" />
-              <h2 className="text-xl">{lang === "en" ? "Web" : "Веб"}</h2>
-              <p className="text-gray-500">
-                {lang === "en"
-                  ? "FullStack web development(learning modern FrontEnd now)."
-                  : "Фулл-стэк веб разработка (изучаю современную разработку фронтэнда)"}
-              </p>
-              <p className="text-xl">
-                {lang === "en"
-                  ? "Main Frameworks/tools"
-                  : "Основные фреймворки/инструменты"}
-              </p>
-              <ul>
-                <li>ReactJS</li>
-                <li>Ant design</li>
-                <li>Tailwind CSS</li>
-                <li>React Router Dom</li>
-                <li>Pure JS, HTML5, CSS3</li>
-                <li>Figma</li>
-              </ul>
-            </div>
-
-            <div className="w-full shadow-lg rounded-md px-4 py-5 flex flex-col items-center text-center gap-1">
-              <img src="ops.png" className="w-48" alt="gambar" />
-              <h2 className="text-xl">
-                {lang === "en"
-                  ? "System Administration/DevOPS"
-                  : "Системное администрирование/DevOPS"}
-              </h2>
-              <p className="text-gray-500">
-                {lang === "en"
-                  ? "Hate Windows, use Linux everytime..."
-                  : "Против Windows, использую Linux всегда"}
-              </p>
-              <p className="text-xl ">
-                {lang === "en" ? "Tools" : "Инструменты"}
-              </p>
-              <ul>
-                <li>Arch based + Debian based</li>
-                <li>GitHub Actions CI</li>
-                <li>Docker + Docker Compose</li>
-              </ul>
-            </div>
+            ))}
           </div>
+
         </section>
 
         <section id="portfolio" className="mt-10">
@@ -284,12 +281,12 @@ function App() {
                 <p className="text-gray-500">
                   {lang === "en" ? project.about[0] : project.about[1]}
                 </p>
-                <p className="text-xl ">
+                <p className="text-xl mb-2">
                   {lang === "en" ? "Built with" : "Сделано с использованием"}
                 </p>
                 <ul>
                   {project.stack.map((library) => (
-                    <li key={library}>{library}</li>
+                    <TechologyTag key={library} name={library} />
                   ))}
                 </ul>
               </div>
@@ -325,8 +322,8 @@ function App() {
                       ? "Win"
                       : "Победа"
                     : lang === "en"
-                    ? "Lose"
-                    : "Не победа"}
+                      ? "Lose"
+                      : "Не победа"}
                 </h2>
                 <div className="text-5xl py-4 flex justify-center gap-3">
                   <AiFillGithub
