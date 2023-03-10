@@ -121,6 +121,16 @@ function App() {
       stack: ["ReactJS", "Bootstrap5", "Github Pages"],
     },
     {
+      images: ["ProjectsPreviews/eurobot_develop/2.png", "ProjectsPreviews/eurobot_develop/1.png", "ProjectsPreviews/eurobot_develop/0.png"],
+      title: ["Eurobot Development 22/23", "Разработка кода для Eurobot 22/23"],
+      url: "https://github.com/robotx-school",
+      about: [
+        "Description of the competition is in the project with a calculator. This year, our robots are controlled by a combination of Raspberry PI + Arduino Mega (communication via SPI). Raspberry PI solves top-level tasks: path planner, task scheduler, web interface. Arduino Mega solves low-level tasks: controlling motors, servos, and other hardware. Own architecture for the upper and lower levels, without the use of ROS.",
+        "Описание соревнования есть в проекте с калькулятором. В этом году наши роботы управляются связкой из Raspberry PI + Arduino Mega (связь посредствам SPI). Raspberry PI решает задачи верхнего уровня: планировщик пути, планировщик задач, веб интерфейс. Arduino Mega решает задачи нижнего уровня: управление моторами, серво-приводами и другим железом. Своя архитектура для верхнего и нижнего уровней, без использования ROS.",
+      ],
+      stack: ["RPi 3", "RPi 4", "Arduino Mega", "Python", "C++", "Arduino", "Bootstrap 5", "OpenCV", "Flask", "Numpy", "OpenCV Aruco", "Shapely"],
+    },
+    {
       images: ["ProjectsPreviews/gpt3_chat_bot/0.png"],
       title: ["Ru GPT 3 ChatBot in TG", "Русский GPT 3 чат бот в телеграм"],
       url: "https://github.com/ret7020/RuChatGPT",
@@ -129,28 +139,36 @@ function App() {
         "Данный чат бот пытается повторить стиль общения людей из моих чатов. Чаты брались из вк и телеграм. Для вк был написан специальный сборщик через их апи. В качестве интерфейса для бота используется телеграм бот на фреймворке aiogram",
       ],
       stack: ["PyTorch", "Requests", "Aiogram", "Transformers"],
-    },
+    }
+
   ];
 
   const TECHNOLOGIES = [
     {
       name: ["Python", "Python"],
       image: "python.png",
-      about: ["Develop neural networks, web backend, IoT high level software, data analyze, telegram bots.", "Разрабатываю нейронные сети, бэкэнд веб приложений, программное обеспечение для интернета вещей, анализ данных, телеграм боты"],
+      about: ["Develop neural networks, web backend, IoT high level software, data analyze, telegram bots.", "Разрабатываю нейронные сети, бэкэнд веб приложений, программное обеспечение для интернета вещей, анализ данных, телеграм боты."],
       tools: ["FastAPI", "Flask", "Sqlalchemy", "OpenCV", "PyTorch", "SkLearn", "Catboost", "Yolo", "Pandas", "Matplotlib", "Aiogram"]
     },
     {
-      name: ["Web", "Веб"],
+      name: ["C++", "C++"],
+      image: "cpp.svg",
+      about: ["Develop fast and performace programs.", "Разрабатываю быстрые и производительные программы."],
+      tools: ["Crow", "STL", "OpenCV", "ROS CPP", "Boost"]
+    },
+    {
+      name: ["Web Frontend", "Веб фронтенд"],
       image: "web.png",
       about: ["FullStack web development(learning modern FrontEnd now).", "Фулл-стэк веб разработка (изучаю современную разработку фронтэнда)."],
-      tools: ["ReactJS", "Ant Design", "Tailwind CSS", "Bootstrap 5", "React Router Dom", "Figma"]
+      tools: ["ReactJS", "Ant Design", "Tailwind CSS", "Bootstrap 5", "React Router Dom", "Figma", "Native Stack", "EcmaScript (JS)"]
     },
     {
       name: ["System Administration/DevOPS", "Системное администрирование/DevOPS"],
       image: "ops.png",
-      about: ["Hate Windows, use Linux everytime...", "Против Windows, использую Linux всегда"],
+      about: ["Use Linux at all computers", "Использую Линукс на всех своих компьютерах"],
       tools: ["Arch based + Debian based", "GitHub Actions CI", "Docker + Docker Compose", "Nginx"]
-    }
+    },
+    
   ]
 
   return (
@@ -204,10 +222,10 @@ function App() {
           </h1>
           <p className="mt-1 text-md">
             {lang === "en"
-              ? "I have experience in building FullStack REST-API web applications, low level Arduino-RaspberryPI communication framework, machine-learning applications(images, audio, nlp)"
-              : "У меня есть опыт в разработке фулл-стэк веб приложений с REST API, низкоуровневой разработки фреймворка для коммуникации Raspberry PI с ардуино, приложения с машинным обучением (изображения, звук и текст)."}
+              ? "I have experience in building FullStack REST-API web applications, low level Arduino-RaspberryPI communication framework, machine-learning applications(images, audio, video, nlp)"
+              : "У меня есть опыт в разработке фулл-стэк веб приложений с REST API, низкоуровневой разработки фреймворка для коммуникации Raspberry PI с ардуино, приложения с машинным обучением (изображения, звук, видео, nlp)."}
           </p>
-          <div className="mt-4 flex flex-col md:flex-row gap-8">
+          <div className="mt-4 flex content-center grid lg:grid-cols-3 gap-8 md:flex-row md">
             {TECHNOLOGIES.map((item) => (
               <div className="w-full shadow-lg rounded-md px-4 py-5 flex flex-col items-center text-center gap-1">
                 <img src={item.image} className="w-48" alt={item.name[0]} />
@@ -215,7 +233,7 @@ function App() {
                 <p className="text-gray-500">
                   {lang === "en" ? item.about[0] : item.about[1]}
                 </p>
-                <p className="text-xl ">
+                <p className="text-xl mb-2">
                   {lang === "en"
                     ? "Main Frameworks/tools"
                     : "Основные фреймворки/инструменты"}
@@ -238,8 +256,8 @@ function App() {
           </h1>
           <p className="mt-1 text-md">
             {lang === "en"
-              ? "Some projects that I developed alone."
-              : "Проекты, разработанные лично мной"}
+              ? "Projects I am working on. Click on preview to see extra screenshots."
+              : "Проекты над которыми я работаю. Нажмите на превью, чтобы увидеть дополнительные скриншоты."}
           </p>
 
           <div className="mt-4 flex content-center grid lg:grid-cols-3 gap-8 md:flex-row md">
@@ -250,6 +268,7 @@ function App() {
               >
                 <img
                   src={project.images[0]}
+                  style={{cursor: "pointer"}}
                   className="w-100"
                   alt={project.images[0]}
                   onClick={(e) => {
@@ -352,7 +371,7 @@ function App() {
             <h1 className="font-medium text-lg">
               {lang === "en" ? "Contact Me" : "Связь со мной"}
             </h1>
-            <p>{lang === "en" ? "Data to contact me" : "Контактные данные"}</p>
+            
 
             <ul className="md:flex justify-center gap-4">
               <li className="flex items-center gap-2">
@@ -382,19 +401,19 @@ function App() {
                   openUrl("https://t.me/Rtyrdv");
                 }}
               />
-              <AiFillInstagram
+              {/* <AiFillInstagram
                 className="text-white-500 hover:text-gray-400 cursor-pointer"
                 onClick={() => {
                   openUrl("https://instagram.com/stephan.zhdanov");
                 }}
-              />
+              /> */}
             </div>
 
             <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
 
             <p className="text-center text-sm text-gray-300 sm:text-center">
               © 2023
-              <a href="https://github.com/ret7020"> Developed by @ret7020</a>.
+              <a href="https://github.com/ret7020"> Developed by @ret7020 with ReactJS and hosted on Github Pages</a>.
             </p>
           </div>
         </section>

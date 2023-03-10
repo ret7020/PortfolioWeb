@@ -14,7 +14,7 @@ export default function Navbar({ lang, setLang }) {
             else setLang("ru");
           }}
         >
-          {lang === "ru" ? "English version" : "Russian version"}
+          {lang === "ru" ? "EN" : "RU"}
         </span>
       </ul>
     </nav>
