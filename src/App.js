@@ -2,7 +2,6 @@ import "./App.css";
 import Navbar from "./Navbar";
 import {
   AiFillGithub,
-  AiFillInstagram,
   AiFillMail,
   AiFillEnvironment,
   AiFillPhone,
@@ -18,7 +17,7 @@ const openUrl = (url) => {
 
 const TechologyTag = ({ name }) => (
   <div
-    class="ml-4 mb-2 text-xs inline-flex items-center font-bold leading-sm px-3 py-1 rounded-full bg-white text-gray-700 border"
+    className="ml-4 mb-2 text-xs inline-flex items-center font-bold leading-sm px-3 py-1 rounded-full bg-white text-gray-700 border"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -27,10 +26,10 @@ const TechologyTag = ({ name }) => (
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="feather feather-archive mr-2"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="feather feather-archive mr-2"
     >
       <polyline points="21 8 21 21 3 21 3 8"></polyline>
       <rect x="1" y="3" width="22" height="5"></rect>
@@ -159,15 +158,16 @@ function App() {
     {
       name: ["Web Frontend", "Веб фронтенд"],
       image: "web.png",
-      about: ["FullStack web development(learning modern FrontEnd now).", "Фулл-стэк веб разработка (изучаю современную разработку фронтэнда)."],
+      about: ["FullStack web development(learning modern Frontend now).", "Фулл-стэк веб разработка (изучаю современную разработку фронтэнда)."],
       tools: ["ReactJS", "Ant Design", "Tailwind CSS", "Bootstrap 5", "React Router Dom", "Figma", "Native Stack", "EcmaScript (JS)"]
     },
     {
       name: ["System Administration/DevOPS", "Системное администрирование/DevOPS"],
       image: "ops.png",
       about: ["Use Linux at all computers", "Использую Линукс на всех своих компьютерах"],
-      tools: ["Arch based + Debian based", "GitHub Actions CI", "Docker + Docker Compose", "Nginx"]
+      tools: ["Arch based + Debian based", "GitHub Actions CI", "Docker", "Nginx", "Git", "Docker Compose"]
     },
+    
     
   ]
 
@@ -192,11 +192,11 @@ function App() {
             {lang === "en" ? "Stephan Zhdanov" : "Степан Жданов"}
           </h1>
           <h3 className="text-xl md:text-2xl">
-            {lang === "en" ? "Software Engineer" : "Инженер-программист"}
+            {lang === "en" ? "Junior Software Engineer" : "Начинающий Инженер-программист"}
           </h3>
           <p className="text-md py-1 text-gray-800 md:text-xl">
             {lang === "en"
-              ? "Interesetd in: Machine Learning, Data Science, Computer Vision, Microcontrollers Firmware Development, Web Backend. Learning web FrontEnd via study projects. I advocate open source and develop open source projects myself. True linux user!"
+              ? "Interesetd in: Machine Learning, Data Science, Computer Vision, Microcontrollers Firmware Development, Web Backend. Learning web Frontend via study projects. I support open source and develop open source projects myself. True Linux user!"
               : "Интересы: Машинное обучение, большие данные, компьютерное зрение, разработка под микроконтроллеры, бэкэнд веб-приложений. Изучаю фронтэнд разработку. Поддерживаю проекты с открым исходным кодом и сам их разрабатываю. Настоящий фанат Linux."}
           </p>
           <div className="text-5xl py-4 flex justify-center gap-10">
@@ -222,8 +222,8 @@ function App() {
           </h1>
           <p className="mt-1 text-md">
             {lang === "en"
-              ? "I have experience in building FullStack REST-API web applications, low level Arduino-RaspberryPI communication framework, machine-learning applications(images, audio, video, nlp)"
-              : "У меня есть опыт в разработке фулл-стэк веб приложений с REST API, низкоуровневой разработки фреймворка для коммуникации Raspberry PI с ардуино, приложения с машинным обучением (изображения, звук, видео, nlp)."}
+              ? "I have experience in building FullStack REST-API web applications, low level Arduino-RaspberryPI communication framework(via SPI), machine-learning applications(images, audio, video, nlp)"
+              : "У меня есть опыт в разработке фулл-стэк веб приложений с REST API, низкоуровневой разработки фреймворка для коммуникации Raspberry PI с ардуино(через SPI), приложения с машинным обучением (изображения, звук, видео, nlp)."}
           </p>
           <div className="mt-4 flex content-center grid lg:grid-cols-3 gap-8 md:flex-row md">
             {TECHNOLOGIES.map((item) => (
