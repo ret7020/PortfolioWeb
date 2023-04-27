@@ -138,6 +138,16 @@ function App() {
         "Данный чат бот пытается повторить стиль общения людей из моих чатов. Чаты брались из вк и телеграм. Для вк был написан специальный сборщик через их апи. В качестве интерфейса для бота используется телеграм бот на фреймворке aiogram",
       ],
       stack: ["PyTorch", "Requests", "Aiogram", "Transformers"],
+    },
+    {
+      images: ["ProjectsPreviews/shtp/0.png", "ProjectsPreviews/shtp/1.png", "ProjectsPreviews/shtp/2.png"],
+      title: ["ShTP - School IT Platform", "ShTP - Школьная IT платформа"],
+      url: "https://github.com/ItClassDev",
+      about: [
+        "ShTP solves the problems of students of specialized IT classes in Moscow: Tracking pre-professional events, saving an individual portfolio, an automated system for checking programming tasks.",
+        "ShTP решает проблемы учащихся профильных ИТ классов в Москве: Отслеживание предпрофессиональных мероприятий, сохранение индивидуального портфолио, автоматизированная система для проверки задач по программированию. ",
+      ],
+      stack: ["FastAPI", "ReactJS", "Ant Design", "PostgreSQL", "Docker", "Docker-compose", "Nginx"],
     }
 
   ];
