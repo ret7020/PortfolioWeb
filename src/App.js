@@ -148,6 +148,16 @@ function App() {
         "ShTP решает проблемы учащихся профильных ИТ классов в Москве: Отслеживание предпрофессиональных мероприятий, сохранение индивидуального портфолио, автоматизированная система для проверки задач по программированию. ",
       ],
       stack: ["FastAPI", "ReactJS", "Ant Design", "PostgreSQL", "Docker", "Docker-compose", "Nginx"],
+    },
+    {
+      images: ["ProjectsPreviews/remote_manipulator/0.png"],
+      title: ["Remote control of the UR manipulator with ROS2 (WIP)", "Дистанционное управление манипулятором UR на ROS2 (WIP)"],
+      url: "https://github.com/robotx-school/Remote-Manipulator/",
+      about: [
+        "System for safe remote control of the UR 3 manipulator located in Skoltech. The system consists of Raspberry PI 4 and two cameras. The system allows you to control the manipulator within the specified limits - a special field limited by four aruco markers. It is also possible to control the power supply of the manipulator, removing it from the protection mode. Code written under ROS2 Humble",
+        "Система для безопасного дистанционного  управления манипулятором UR 3, расположенных в Сколтехе. Система состоит из Raspberry PI 4 и двух камер. Система позвоялет управлять манипулятором в пределах заданных лимитов - специального поля, ограниченного четырьмя аруко маркерами. Так же есть возможность управлять питанием манипулятора, выводя его из режима защиты. Код написан под ROS2 Humble",
+      ],
+      stack: ["Python", "ROS2 Humble", "urx", "OpenCV", "Bootstrap 5", "UR3"],
     }
 
   ];
