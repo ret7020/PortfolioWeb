@@ -151,7 +151,7 @@ function App() {
     },
     {
       images: ["ProjectsPreviews/remote_manipulator/0.png"],
-      title: ["Remote control of the UR manipulator with ROS2 (WIP)", "Дистанционное управление манипулятором UR на ROS2 (WIP)"],
+      title: ["Remote control of the UR manipulator with ROS2", "Дистанционное управление манипулятором UR на ROS2"],
       url: "https://github.com/robotx-school/Remote-Manipulator/",
       about: [
         "System for safe remote control of the UR 3 manipulator located in Skoltech. The system consists of Raspberry PI 4 and two cameras. The system allows you to control the manipulator within the specified limits - a special field limited by four aruco markers. It is also possible to control the power supply of the manipulator, removing it from the protection mode. Code written under ROS2 Humble",
@@ -421,16 +421,10 @@ function App() {
                   openUrl("https://t.me/Rtyrdv");
                 }}
               />
-              {/* <AiFillInstagram
-                className="text-white-500 hover:text-gray-400 cursor-pointer"
-                onClick={() => {
-                  openUrl("https://instagram.com/stephan.zhdanov");
-                }}
-              /> */}
+        
             </div>
 
             <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-
             <p className="text-center text-sm text-gray-300 sm:text-center">
               © 2023
               <a href="https://github.com/ret7020"> Developed by @ret7020 with ReactJS and hosted on Github Pages</a>.
